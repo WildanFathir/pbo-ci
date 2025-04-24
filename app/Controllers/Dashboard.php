@@ -8,9 +8,9 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        $data['css_js'] = view('css_js');
+        $data['css_js'] = view('CssJs');
         $data['navbar'] = view('Navbar');
-        $data['sidebar'] = view('SideBar');
+        $data['sidebar'] = view('Sidebar');
         return view('Dashboard', $data);
     }
 }
