@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
+use App\Controllers\Base_controller;
 
-class Login extends BaseController
+class Auth_controller extends Base_controller
 {
-    public function index()
+    public function login()
     {
         $data['css_js'] = view('Css_js');
 
