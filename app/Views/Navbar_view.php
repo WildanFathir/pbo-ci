@@ -37,7 +37,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="<?php echo base_url('auth/logout') ?>">
 										<i class="icon-off"></i>
 										Logout
 									</a>
