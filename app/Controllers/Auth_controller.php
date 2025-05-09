@@ -9,8 +9,13 @@ class Auth_controller extends Base_controller
 {
     public function login()
     {
-        $data['css_js'] = view('Css_js');
-        return view('Login_view', $data);
+        $sessiopn = session();
+        if (!empty($sessiopn->get('status_login'))) {
+            return redirect()->to(base_url('Dashboard_controller'));
+        } else {
+            $data['css_js'] = view('Css_js');
+            return view('Login_view', $data);
+        }
     }
 
     public function proses()
@@ -36,7 +41,7 @@ class Auth_controller extends Base_controller
                     </div>
                 ');
 
-                return redirect()->to(base_url('Auth_controller/login'));
+                return redirect()->to('auth/login');
             }
 
             if ($proses) {
@@ -66,10 +71,16 @@ class Auth_controller extends Base_controller
                     </div>
                 ');
 
-                return redirect()->to(base_url('Auth_controller/login'));
+                return redirect()->to('auth/login');
             }
         }
         
-        return redirect()->to(base_url('Auth_controller/login'));
+        return redirect()->to('auth/login');
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('auth/login');
     }
 }
