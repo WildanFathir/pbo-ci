@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -45,7 +44,15 @@
 
 												<div class="space-6"></div>
 
-												<form />
+												<?php 
+												$session = session();
+												$info = $session->getFlashdata('info');
+												if ($info) {
+													echo $info;
+												}
+												?>
+
+												<form name="form_login" method="post" action="<?php echo base_url('Auth_controller/proses'); ?>">
 													<fieldset>
 														<label>
 															<span class="block input-icon input-icon-right">
@@ -64,7 +71,7 @@
 														<div class="space"></div>
 
 														<div class="clearfix">
-															<button onclick="" name="btn_login" class="width-35 pull-right btn btn-small btn-primary">
+															<button type="submit" name="btn_login" value="1" class="width-35 pull-right btn btn-small btn-primary">
 																<i class="icon-key"></i>
 																Login
 															</button>

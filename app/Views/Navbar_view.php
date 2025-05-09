@@ -10,10 +10,10 @@
 					<ul class="nav ace-nav pull-right">
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="<?php echo base_url();?>/assets/avatars/user.jpg" alt="user" />
+								<img class="nav-user-photo" src="<?php echo base_url();?>/assets/avatars/<?php echo $foto ?>" alt="<?php echo $foto ?>" />
 								<span class="user-info">
 									<small>Selamat Datang</small>
-									Wildan Fathir Qinthara
+									<?php echo $nama_karyawan ?>
 								</span>
 
 								<i class="icon-caret-down"></i>
