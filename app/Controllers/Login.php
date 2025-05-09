@@ -8,8 +8,8 @@ class Login extends BaseController
 {
     public function index()
     {
-        $data['css_js'] = view('CssJs');
+        $data['css_js'] = view('Css_js');
 
-        return view('Login', $data);
+        return view('Login_view', $data);
     }
 }
