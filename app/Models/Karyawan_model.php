@@ -23,4 +23,9 @@ class Karyawan_model extends Model
 
         return null;
     }
+
+    function get_karyawan()
+    {
+        return $this->orderBy('no_karyawan', 'ASC')->findAll();
+    }
 }
