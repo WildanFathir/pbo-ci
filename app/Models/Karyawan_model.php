@@ -11,7 +11,7 @@ class Karyawan_model extends Model
 
     protected $allowedFields    = ['no_karyawan', 'nama_karyawan', 'alamat', 'password', 'foto'];
 
-    function cek_login($no_karyawan, $password)
+    public function cek_login($no_karyawan, $password)
     {
         $data = $this->where('no_karyawan', $no_karyawan)->first();
 
@@ -24,8 +24,28 @@ class Karyawan_model extends Model
         return null;
     }
 
-    function get_karyawan()
+    public function get_karyawan()
     {
         return $this->orderBy('no_karyawan', 'ASC')->findAll();
+    }
+
+    public function nomor_otomatis()
+    {
+        // Ambil no_karyawan yang diawali 'admin', urutkan DESC
+        $karyawan = $this->like('no_karyawan', 'admin', 'after')
+            ->orderBy('no_karyawan', 'DESC')
+            ->first();
+
+        if ($karyawan) {
+            // Ambil 2 digit terakhir dari no_karyawan terbesar
+            $lastNo = substr($karyawan['no_karyawan'], -2);
+            $nomor = intval($lastNo) + 1;
+        } else {
+            $nomor = 1;
+        }
+
+        $ambil_nomor = str_pad($nomor, 2, "0", STR_PAD_LEFT);
+        $nomor_fix = "admin" . $ambil_nomor;
+        return $nomor_fix;
     }
 }
