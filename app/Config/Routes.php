@@ -12,3 +12,11 @@ $routes->group('auth', function ($routes) {
     $routes->get('logout', 'Auth_controller::logout');
     $routes->post('proses', 'Auth_controller::proses');
 });
+
+$routes->group('dashboard', function ($routes) {
+    // main dashboard route
+    $routes->get('/', 'Dashboard_controller::index', ['as' => 'dashboard']);
+
+    // karyawan routes
+    $routes->get('karyawan', 'Karyawan_controller::index', ['as' => 'karyawan']);
+});
