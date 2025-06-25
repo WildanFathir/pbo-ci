@@ -13,7 +13,7 @@ class Auth_controller extends Base_controller
         if (!empty($sessiopn->get('status_login'))) {
             return redirect()->to(base_url('Dashboard_controller'));
         } else {
-            $data['css_js'] = view('Css_js');
+            $data['css_js'] = view('components/Css_js');
             return view('auth/Login_view', $data);
         }
     }

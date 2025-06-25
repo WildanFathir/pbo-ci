@@ -19,13 +19,13 @@ class Dashboard_controller extends Base_controller
                 'foto' => $session->get('foto'),
             ];
 
-            $data['css_js'] = view('Css_js');
-            $data['navbar'] = view('Navbar_view', $data);
-            $data['sidebar'] = view('Sidebar_view');
+            $data['css_js'] = view('components/Css_js');
+            $data['navbar'] = view('components/Navbar_view', $data);
+            $data['sidebar'] = view('components/Sidebar_view');
 
             return view('dashboard/Dashboard_view', $data);
         }
 
-        return view('auth/Login_view', ['css_js' => view('Css_js')]);
+        return view('auth/Login_view', ['css_js' => view('components/Css_js')]);
     }
 }

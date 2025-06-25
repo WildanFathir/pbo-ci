@@ -25,13 +25,13 @@ class Karyawan_controller extends Base_controller
                 'alamat' => $session->get('alamat'),
                 'password' => $session->get('password'),
                 'foto' => $session->get('foto'),
-                'css_js' => view('Css_js'),
-                'navbar' => view('Navbar_view', [
+                'css_js' => view('components/Css_js'),
+                'navbar' => view('components/Navbar_view', [
                     'no_karyawan' => $session->get('no_karyawan'),
                     'nama_karyawan' => $session->get('nama_karyawan'),
                     'foto' => $session->get('foto'),
                 ]),
-                'sidebar' => view('Sidebar_view'),
+                'sidebar' => view('components/Sidebar_view'),
                 'data_karyawan' => $this->karyawanModel->get_karyawan(),
                 'nomor_otomatis' => $this->karyawanModel->nomor_otomatis(),
                 'info' => session()->getFlashdata('info')
