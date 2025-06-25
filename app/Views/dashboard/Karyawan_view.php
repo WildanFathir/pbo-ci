@@ -136,6 +136,10 @@
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td class="center" colspan="6">Data karyawan belum tersedia</td>
+                                </tr>
                             <?php endif ?>
                         </tbody>
                     </table>
