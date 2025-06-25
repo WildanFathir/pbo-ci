@@ -27,7 +27,7 @@
 
         <ul class="submenu">
             <li>
-                <a href="error-404.html">
+                <a href="<?= route_to('kategoriProduk') ?>">
                     <i class="icon-double-angle-right"></i>
                     Kategori Produk
                 </a>
