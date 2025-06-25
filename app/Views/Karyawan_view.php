@@ -88,8 +88,12 @@
 
                                         <td class="td-actions">
                                             <div class="hidden-phone visible-desktop action-buttons">
-
-                                                <a class="green" href="#">
+                                                <a class="green btn_edit" title="Edit Data" href="#"
+                                                    data-no_karyawan="<?= $karyawan['no_karyawan'] ?>"
+                                                    data-nama_karyawan="<?= $karyawan['nama_karyawan'] ?>"
+                                                    data-alamat="<?= $karyawan['alamat'] ?>"
+                                                    data-password="<?= $karyawan['password'] ?>"
+                                                    data-foto="<?= $karyawan['foto'] ?>">
                                                     <i class="icon-pencil bigger-130"></i>
                                                 </a>
 
@@ -106,10 +110,13 @@
 
                                                     <ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
                                                         <li>
-                                                            <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-                                                                <span class="green">
-                                                                    <i class="icon-edit bigger-120"></i>
-                                                                </span>
+                                                            <a class="green btn_edit" title="Edit Data" href="#"
+                                                                data-no_karyawan="<?= $karyawan['no_karyawan'] ?>"
+                                                                data-nama_karyawan="<?= $karyawan['nama_karyawan'] ?>"
+                                                                data-alamat="<?= $karyawan['alamat'] ?>"
+                                                                data-password="<?= $karyawan['password'] ?>"
+                                                                data-foto="<?= $karyawan['foto'] ?>">
+                                                                <i class="icon-pencil bigger-130"></i>
                                                             </a>
                                                         </li>
 
@@ -186,7 +193,7 @@
                 <h4 class="blue bigger">Tambah Data</h4>
             </div>
 
-            <div class="modal-body overflow-visible">
+            <div class="modal-body overflow-scroll">
                 <div class="row-fluid">
                     <div class="span5">
                         <div class="space"></div>
@@ -245,6 +252,117 @@
             </div>
         </div>
     </form>
+
+    <form name="modal_form2" method="post" enctype="multipart/form-data" action="<?= route_to('editKaryawan') ?>" onsubmit="return cek_inputan_edit()">
+        <div id="modal-form2" class="modal hide" tabindex="-1">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="blue bigger">Edit Data</h4>
+            </div>
+
+            <div class="modal-body overflow-scroll">
+                <div class="row-fluid">
+                    <div class="span5">
+                        <div class="space"></div>
+                        <img width="200px" alt="foto" name="vfoto" />
+                        <input type="file" name="foto" id="id-input-file-2" />
+                    </div>
+
+                    <div class="vspace"></div>
+
+                    <div class="span7">
+                        <div class="control-group">
+                            <label class="control-label" for="no_karyawan">No Karyawan</label>
+
+                            <div class="controls">
+                                <input class="input-small span12 no_karyawan" type="text" id="no_karyawan" placeholder="Masukan no karyawan" name="no_karyawan_edit" readonly value="" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="nama_karyawan">Nama Karyawan</label>
+
+                            <div class="controls">
+                                <input class="input-small span12 nama_karyawan" type="text" id="nama_karyawan" placeholder="Masukan nama karyawan" name="nama_karyawan_edit" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="alamat">Alamat</label>
+
+                            <div class="controls">
+                                <textarea class="span12 alamat" id="alamat" placeholder="Masukan alamat" name="alamat_edit"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="password">Password Baru</label>
+
+                            <div class="controls">
+                                <input class="input-small span8" type="password" id="password" placeholder="Masukan password" name="password_edit" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-small" data-dismiss="modal">
+                    <i class="icon-remove"></i>
+                    Batal
+                </button>
+
+                <button type="submit" class="btn btn-small btn-primary" name="btn_ubah">
+                    <i class="icon-ok"></i>
+                    Ubah
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            $('.btn_edit').on('click', function() {
+                const no_karyawan = $(this).data('no_karyawan');
+                const nama_karyawan = $(this).data('nama_karyawan');
+                const alamat = $(this).data('alamat');
+                const password = $(this).data('password');
+                const foto = $(this).data('foto');
+                $('.no_karyawan').val(no_karyawan);
+                $('.nama_karyawan').val(nama_karyawan);
+                $('.alamat').val(alamat);
+                $('.password').val(password);
+                $('.foto').val(foto);
+                document.modal_form2.vfoto.src = "<?= base_url('assets/avatars/'); ?>" + $(this).data('foto');
+                $('#modal-form2').modal('show');
+            });
+        });
+    </script>
+
+    <script>
+        function cek_inputan() {
+            if (document.modal_form1.nama_karyawan.value === "") {
+                document.modal_form1.nama_karyawan.focus();
+                alert("Maaf Nama Karyawan masing kosong");
+                return (false);
+            }
+            if (document.modal_form1.password.value === "") {
+                document.modal_form1.password.focus();
+                alert("Maaf Password masing kosong");
+                return (false);
+            }
+        }
+    </script>
+
+    <script>
+        function cek_inputan_edit() {
+            if (document.modal_form2.nama_karyawan_edit.value === "") {
+                document.modal_form2.nama_karyawan_edit.focus();
+                alert("Maaf Nama Karyawan masing kosong");
+                return (false);
+            }
+        }
+    </script>
 
     <script type="text/javascript">
         $(function() {
@@ -593,21 +711,6 @@
             */
 
         });
-    </script>
-
-    <script>
-        function cek_inputan() {
-            if (document.modal_form1.nama_karyawan.value === "") {
-                document.modal_form1.nama_karyawan.focus();
-                alert("Maaf Nama Karyawan masing kosong");
-                return (false);
-            }
-            if (document.modal_form1.password.value === "") {
-                document.modal_form1.password.focus();
-                alert("Maaf Password masing kosong");
-                return (false);
-            }
-        }
     </script>
 
 </body>
