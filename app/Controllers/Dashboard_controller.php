@@ -26,6 +26,6 @@ class Dashboard_controller extends Base_controller
             return view('dashboard/Dashboard_view', $data);
         }
 
-        return view('Login_view', ['css_js' => view('Css_js')]);
+        return view('auth/Login_view', ['css_js' => view('Css_js')]);
     }
 }

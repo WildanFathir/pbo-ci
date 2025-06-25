@@ -14,7 +14,7 @@ class Auth_controller extends Base_controller
             return redirect()->to(base_url('Dashboard_controller'));
         } else {
             $data['css_js'] = view('Css_js');
-            return view('Login_view', $data);
+            return view('auth/Login_view', $data);
         }
     }
 
@@ -74,7 +74,7 @@ class Auth_controller extends Base_controller
                 return redirect()->to('auth/login');
             }
         }
-        
+
         return redirect()->to('auth/login');
     }
 
