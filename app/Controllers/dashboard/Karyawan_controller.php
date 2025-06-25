@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\dashboard;
 
 use App\Controllers\Base_controller;
 use App\Models\Karyawan_model;
