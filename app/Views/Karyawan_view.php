@@ -52,7 +52,8 @@
             <div class="page-content">
                 <div class="button-group" style="margin-bottom: 8px;">
                     <a href="#modal-form" role="button" class="btn btn-info" data-toggle="modal">Tambah Data</a>
-                    <a href="<?= base_url('dashboard') ?>" role="button" class="btn btn-default" data-toggle="modal">Kembali</a>
+                    <a href="<?= route_to('cetakKaryawan') ?>" target="_blank" role="button" class="btn btn-yellow" data-toggle="modal">Cetak PDF</a>
+                    <a href="<?= route_to('dashboard') ?>" role="button" class="btn btn-default" data-toggle="modal">Kembali</a>
                 </div>
                 <!-- Flashdata notification -->
                 <?php if ($flash = session()->getFlashdata('flash')): ?>
