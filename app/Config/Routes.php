@@ -20,4 +20,5 @@ $routes->group('dashboard', function ($routes) {
     // karyawan routes
     $routes->get('karyawan', 'Karyawan_controller::index', ['as' => 'karyawan']);
     $routes->post('dashboard/karyawan/simpan', 'Karyawan_controller::simpan', ['as' => 'simpanKaryawan']);
+    $routes->post('dashboard/karyawan/edit', 'Karyawan_controller::ubah', ['as' => 'editKaryawan']);
 });
