@@ -40,3 +40,4 @@
 <script src="<?= base_url('assets/js/jquery.inputlimiter.1.3.1.min.js') ?>"></script>
 <script src="<?= base_url('assets/js/jquery.maskedinput.min.js') ?>"></script>
 <script src="<?= base_url('assets/js/bootstrap-tag.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/bootbox.min.js') ?>"></script>
