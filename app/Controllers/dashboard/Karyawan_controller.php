@@ -20,21 +20,19 @@ class Karyawan_controller extends Base_controller
 
         if ($session->get('status_login')) {
             $data = [
-                'no_karyawan' => $session->get('no_karyawan'),
-                'nama_karyawan' => $session->get('nama_karyawan'),
-                'alamat' => $session->get('alamat'),
-                'password' => $session->get('password'),
-                'foto' => $session->get('foto'),
-                'css_js' => view('components/Css_js'),
-                'navbar' => view('components/Navbar_view', [
-                    'no_karyawan' => $session->get('no_karyawan'),
+                'no_karyawan'       => $session->get('no_karyawan'),
+                'nama_karyawan'     => $session->get('nama_karyawan'),
+                'foto'              => $session->get('foto'),
+                'navbar'            => view('components/Navbar_view', [
+                    'no_karyawan'   => $session->get('no_karyawan'),
                     'nama_karyawan' => $session->get('nama_karyawan'),
-                    'foto' => $session->get('foto'),
+                    'foto'          => $session->get('foto'),
                 ]),
-                'sidebar' => view('components/Sidebar_view'),
-                'data_karyawan' => $this->karyawanModel->get_karyawan(),
-                'nomor_otomatis' => $this->karyawanModel->nomor_otomatis(),
-                'info' => session()->getFlashdata('info')
+                'css_js'            => view('components/Css_js'),
+                'sidebar'           => view('components/Sidebar_view'),
+                'data_karyawan'     => $this->karyawanModel->get_karyawan(),
+                'nomor_otomatis'    => $this->karyawanModel->nomor_otomatis(),
+                'info'              => session()->getFlashdata('info')
             ];
 
             return view('dashboard/Karyawan_view', $data);
