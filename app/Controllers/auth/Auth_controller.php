@@ -11,7 +11,7 @@ class Auth_controller extends Base_controller
     {
         $sessiopn = session();
         if (!empty($sessiopn->get('status_login'))) {
-            return redirect()->to(base_url('Dashboard_controller'));
+            return redirect()->to('dashboard');
         } else {
             $data['css_js'] = view('components/Css_js');
             return view('auth/Login_view', $data);
@@ -55,7 +55,7 @@ class Auth_controller extends Base_controller
                 ];
 
                 session()->set($data);
-                return redirect()->to(base_url('Dashboard_controller'));
+                return redirect()->to('dashboard');
             } else {
                 session()->setFlashdata('info', '
                     <div class="alert alert-danger">
