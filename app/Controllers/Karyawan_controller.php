@@ -49,6 +49,11 @@ class Karyawan_controller extends Base_controller
             return redirect()->to('/login');
         }
 
+        $no_karyawan    = $this->request->getPost('no_karyawan');
+        $nama_karyawan  = $this->request->getPost('nama_karyawan');
+        $alamat         = $this->request->getPost('alamat');
+        $password       = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
+
         $validation = \Config\Services::validation();
         $validation->setRules([
             'no_karyawan' => 'required',
@@ -59,6 +64,7 @@ class Karyawan_controller extends Base_controller
                 'label' => 'Foto',
                 'rules' => 'uploaded[foto]|is_image[foto]|max_size[foto,4096]|mime_in[foto,image/jpg,image/jpeg,image/png]',
                 'errors' => [
+                    'uploaded' => 'Foto tidak boleh kosong',
                     'is_image' => 'File harus berupa gambar.',
                     'max_size' => 'Ukuran foto maksimal 4MB.',
                     'mime_in' => 'Format foto harus jpg/jpeg/png.'
@@ -87,16 +93,78 @@ class Karyawan_controller extends Base_controller
         }
 
         $this->karyawanModel->insert([
-            'no_karyawan' => $this->request->getPost('no_karyawan'),
-            'nama_karyawan' => $this->request->getPost('nama_karyawan'),
-            'alamat' => $this->request->getPost('alamat'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-            'foto' => $fotoName
+            'no_karyawan'   => $no_karyawan,
+            'nama_karyawan' => $nama_karyawan,
+            'alamat'        => $alamat,
+            'password'      => $password,
+            'foto'          => $fotoName
         ]);
 
         session()->setFlashdata('flash', [
             'type' => 'success',
             'message' => 'Data berhasil disimpan.'
+        ]);
+        return redirect()->to(base_url('dashboard/karyawan'));
+    }
+
+    public function ubah()
+    {
+        if (!session()->get('status_login')) {
+            return redirect()->to('/login');
+        }
+
+        $no_karyawan    = $this->request->getPost('no_karyawan_edit');
+        $nama_karyawan  = $this->request->getPost('nama_karyawan_edit');
+        $alamat         = $this->request->getPost('alamat_edit');
+        $password       = $this->request->getPost('password_edit');
+        $hashedPassword = !empty($password) ? password_hash($password, PASSWORD_DEFAULT) : '';
+        $foto           = $this->request->getFile('foto');
+
+        $rules = [
+            'no_karyawan_edit' => 'required',
+            'nama_karyawan_edit' => 'required',
+            'alamat_edit' => 'required',
+        ];
+
+        // Jika ada file foto baru diupload, tambahkan rules validasi file
+        if ($foto && $foto->isValid() && !$foto->hasMoved()) {
+            $rules['foto'] = [
+                'label' => 'Foto',
+                'rules' => 'is_image[foto]|max_size[foto,4096]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'is_image' => 'File harus berupa gambar.',
+                    'max_size' => 'Ukuran foto maksimal 4MB.',
+                    'mime_in' => 'Format foto harus jpg/jpeg/png.'
+                ]
+            ];
+        }
+
+        $validation = \Config\Services::validation();
+        $validation->setRules($rules);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            $errorMsg = $validation->getError('foto');
+            if (!$errorMsg) {
+                $errorMsg = $validation->listErrors();
+            }
+            session()->setFlashdata('flash', [
+                'type' => 'warning',
+                'message' => $errorMsg
+            ]);
+            return redirect()->to(base_url('dashboard/karyawan'))->withInput();
+        }
+
+        $fotoName = '';
+        if ($foto && $foto->isValid() && !$foto->hasMoved()) {
+            $fotoName = $foto->getRandomName();
+            $foto->move('./assets/avatars/', $fotoName);
+        }
+
+        $this->karyawanModel->update_data($no_karyawan, $nama_karyawan, $alamat, $hashedPassword, $fotoName);
+
+        session()->setFlashdata('flash', [
+            'type' => 'success',
+            'message' => 'Data berhasil diperbarui.'
         ]);
         return redirect()->to(base_url('dashboard/karyawan'));
     }
