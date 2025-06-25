@@ -23,7 +23,7 @@ class Dashboard_controller extends Base_controller
             $data['navbar'] = view('Navbar_view', $data);
             $data['sidebar'] = view('Sidebar_view');
 
-            return view('Dashboard_view', $data);
+            return view('dashboard/Dashboard_view', $data);
         }
 
         return view('Login_view', ['css_js' => view('Css_js')]);

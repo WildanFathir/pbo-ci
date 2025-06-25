@@ -37,7 +37,7 @@ class Karyawan_controller extends Base_controller
                 'info' => session()->getFlashdata('info')
             ];
 
-            return view('Karyawan_view', $data);
+            return view('dashboard/Karyawan_view', $data);
         }
 
         return redirect()->to('/login');
