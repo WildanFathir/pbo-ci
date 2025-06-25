@@ -62,4 +62,9 @@ class Karyawan_model extends Model
         }
         $this->update($no_karyawan, $data);
     }
+
+    public function delete_data($no_karyawan)
+    {
+        $this->delete($no_karyawan);
+    }
 }
