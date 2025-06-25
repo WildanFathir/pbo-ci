@@ -59,7 +59,6 @@ class Karyawan_controller extends Base_controller
                 'label' => 'Foto',
                 'rules' => 'uploaded[foto]|is_image[foto]|max_size[foto,4096]|mime_in[foto,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'uploaded' => 'Foto harus diupload.',
                     'is_image' => 'File harus berupa gambar.',
                     'max_size' => 'Ukuran foto maksimal 4MB.',
                     'mime_in' => 'Format foto harus jpg/jpeg/png.'

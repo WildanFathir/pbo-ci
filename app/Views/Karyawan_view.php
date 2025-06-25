@@ -52,7 +52,7 @@
             <div class="page-content">
                 <div class="button-group" style="margin-bottom: 8px;">
                     <a href="#modal-form" role="button" class="btn btn-info" data-toggle="modal">Tambah Data</a>
-                    <a href="#modal-form" role="button" class="btn btn-default" data-toggle="modal">Kembali</a>
+                    <a href="<?= base_url('dashboard') ?>" role="button" class="btn btn-default" data-toggle="modal">Kembali</a>
                 </div>
                 <!-- Flashdata notification -->
                 <?php if ($flash = session()->getFlashdata('flash')): ?>
