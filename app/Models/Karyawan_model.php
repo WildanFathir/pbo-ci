@@ -8,7 +8,6 @@ class Karyawan_model extends Model
 {
     protected $table            = 'karyawan';
     protected $primaryKey       = 'no_karyawan';
-
     protected $allowedFields    = ['no_karyawan', 'nama_karyawan', 'alamat', 'password', 'foto'];
 
     public function cek_login($no_karyawan, $password)
@@ -47,5 +46,20 @@ class Karyawan_model extends Model
         $ambil_nomor = str_pad($nomor, 2, "0", STR_PAD_LEFT);
         $nomor_fix = "admin" . $ambil_nomor;
         return $nomor_fix;
+    }
+
+    public function update_data($no_karyawan, $nama_karyawan, $alamat, $hashedPassword, $foto)
+    {
+        $data = [
+            'nama_karyawan' => $nama_karyawan,
+            'alamat' => $alamat
+        ];
+        if (!empty($hashedPassword)) {
+            $data['password'] = $hashedPassword;
+        }
+        if (!empty($foto)) {
+            $data['foto'] = $foto;
+        }
+        $this->update($no_karyawan, $data);
     }
 }
