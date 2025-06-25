@@ -168,4 +168,19 @@ class Karyawan_controller extends Base_controller
         ]);
         return redirect()->to(base_url('dashboard/karyawan'));
     }
+
+    public function hapus($no_karyawan = null)
+    {
+        if (!session()->get('status_login')) {
+            return redirect()->to('/login');
+        }
+        if ($no_karyawan) {
+            $this->karyawanModel->delete_data($no_karyawan);
+            session()->setFlashdata('flash', [
+                'type' => 'success',
+                'message' => 'Data berhasil dihapus.'
+            ]);
+        }
+        return redirect()->to(base_url('dashboard/karyawan'));
+    }
 }
