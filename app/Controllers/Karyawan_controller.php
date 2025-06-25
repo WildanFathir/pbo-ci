@@ -174,6 +174,7 @@ class Karyawan_controller extends Base_controller
         if (!session()->get('status_login')) {
             return redirect()->to('/login');
         }
+
         if ($no_karyawan) {
             $this->karyawanModel->delete_data($no_karyawan);
             session()->setFlashdata('flash', [
@@ -182,5 +183,45 @@ class Karyawan_controller extends Base_controller
             ]);
         }
         return redirect()->to(base_url('dashboard/karyawan'));
+    }
+
+    public function cetak()
+    {
+        if (!session()->get('status_login')) {
+            return redirect()->to('/login');
+        }
+
+        require_once APPPATH . 'fpdf/fpdf.php';
+        $pdf = new \FPDF('L', 'mm', 'A4');
+        $pdf->AddPage();
+        $pdf->SetTitle("DAFTAR KARYAWAN");
+        $pdf->SetFont('Arial', 'B', 14);
+        $pdf->Cell(260, 7, "DAFTAR KARYAWAN", 0, 1, 'C');
+        $pdf->Cell(2, 7, '', 0, 1);
+        $pdf->SetFillColor(27, 7, 67);
+        $pdf->SetTextColor(255);
+        $fill = true;
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, 'NO', 1, 0, 'C', $fill);
+        $pdf->Cell(40, 6, 'NO KARYAWAN', 1, 0, 'C', $fill);
+        $pdf->Cell(75, 6, 'NAMA KARYAWAN', 1, 0, 'C', $fill);
+        $pdf->Cell(150, 6, 'ALAMAT', 1, 1, 'C', $fill);
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->SetFillColor(204, 229, 250);
+        $pdf->SetTextColor(0);
+        $fill2 = false;
+
+        $data = $this->karyawanModel->get_karyawan();
+        $no = 1;
+        foreach ($data as $karyawan) {
+            $pdf->Cell(10, 6, $no, 1, 0, 'C', $fill2);
+            $pdf->Cell(40, 6, $karyawan['no_karyawan'], 1, 0, 'C', $fill2);
+            $pdf->Cell(75, 6, $karyawan['nama_karyawan'], 1, 0, 'L', $fill2);
+            $pdf->Cell(150, 6, $karyawan['alamat'], 1, 1, 'L', $fill2);
+            $fill2 = !$fill2;
+            $no++;
+        }
+        $pdf->Output();
+        exit;
     }
 }
