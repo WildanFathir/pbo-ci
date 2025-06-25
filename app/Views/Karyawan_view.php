@@ -97,7 +97,9 @@
                                                     <i class="icon-pencil bigger-130"></i>
                                                 </a>
 
-                                                <a class="red" href="#">
+                                                <a class="red btn_hapus" href="#“title=" Hapus Data"
+                                                    data-no_karyawan="<?= $karyawan['no_karyawan'] ?>"
+                                                    data-nama_karyawan="<?= $karyawan['nama_karyawan'] ?>">
                                                     <i class="icon-trash bigger-130"></i>
                                                 </a>
                                             </div>
@@ -121,10 +123,10 @@
                                                         </li>
 
                                                         <li>
-                                                            <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-                                                                <span class="red">
-                                                                    <i class="icon-trash bigger-120"></i>
-                                                                </span>
+                                                            <a class="red btn_hapus" href="#“title=" Hapus Data"
+                                                                data-no_karyawan="<?= $karyawan['no_karyawan'] ?>"
+                                                                data-nama_karyawan="<?= $karyawan['nama_karyawan'] ?>">
+                                                                <i class="icon-trash bigger-130"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -319,6 +321,21 @@
             </div>
         </div>
     </form>
+
+    <script>
+        $(document).ready(function() {
+            $('.btn_hapus').on('click', function() {
+                const no_karyawan = $(this).data('no_karyawan');
+                const nama_karyawan = $(this).data('nama_karyawan');
+                bootbox.confirm(nama_karyawan + " akan dihapus?", function(result) {
+                    if (result) {
+                        window.location.href = "<?= base_url('dashboard/karyawan/hapus/'); ?>" + no_karyawan;
+                    }
+                });
+
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function() {
