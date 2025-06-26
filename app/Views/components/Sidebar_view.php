@@ -41,7 +41,7 @@
             </li>
 
             <li>
-                <a href="grid.html">
+                <a href="<?= route_to('ukuranProduk') ?>">
                     <i class="icon-double-angle-right"></i>
                     Ukuran
                 </a>
