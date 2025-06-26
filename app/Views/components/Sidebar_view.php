@@ -48,7 +48,7 @@
             </li>
 
             <li class="">
-                <a href="blank.html">
+                <a href="<?= route_to('produk') ?>">
                     <i class="icon-double-angle-right"></i>
                     Produk
                 </a>
