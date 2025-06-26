@@ -37,4 +37,11 @@ $routes->group('dashboard', function ($routes) {
     $routes->post('merk_produk/edit', 'dashboard\Merk_produk_controller::ubah', ['as' => 'editMerkProduk']);
     $routes->get('merk_produk/hapus/(:any)', 'dashboard\Merk_produk_controller::hapus/$1', ['as' => 'hapusMerkProduk']);
     $routes->get('merk_produk/cetak', 'dashboard\Merk_produk_controller::cetak', ['as' => 'cetakMerkProduk']);
+
+    // ukuran produk routes
+    $routes->get('ukuran_produk', 'dashboard\Ukuran_produk_controller::index', ['as' => 'ukuranProduk']);
+    $routes->post('ukuran_produk/simpan', 'dashboard\Ukuran_produk_controller::simpan', ['as' => 'simpanUkuranProduk']);
+    $routes->post('ukuran_produk/edit', 'dashboard\Ukuran_produk_controller::ubah', ['as' => 'editUkuranProduk']);
+    $routes->get('ukuran_produk/hapus/(:any)', 'dashboard\Ukuran_produk_controller::hapus/$1', ['as' => 'hapusUkuranProduk']);
+    $routes->get('ukuran_produk/cetak', 'dashboard\Ukuran_produk_controller::cetak', ['as' => 'cetakUkuranProduk']);
 });
