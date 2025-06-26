@@ -19,7 +19,6 @@
 
             <span class="menu-text">
                 Data Produk
-                <span class="badge badge-primary ">4</span>
             </span>
 
             <b class="arrow icon-angle-down"></b>
@@ -54,6 +53,20 @@
                 </a>
             </li>
         </ul>
+    </li>
+
+    <li>
+        <a href="<?= route_to('pelanggan') ?>">
+            <i class="icon-user"></i>
+            <span class="menu-text"> Pelanggan </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="<?= route_to('pemasok') ?>">
+            <i class="icon-truck"></i>
+            <span class="menu-text"> Pemasok </span>
+        </a>
     </li>
 </ul>
 
