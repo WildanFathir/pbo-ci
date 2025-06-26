@@ -17,17 +17,17 @@ class Produk extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 50,
             ],
-            'merk_produk' => [
+            'no_merk_produk' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 20,
             ],
-            'kategori_produk' => [
+            'no_kategori_produk' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 20,
             ],
-            'ukuran_produk' => [
+            'no_ukuran_produk' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 20,
             ],
             'harga_beli' => [
                 'type'       => 'INT',
@@ -43,10 +43,12 @@ class Produk extends Migration
             ],
         ]);
 
-        // Set primary key
         $this->forge->addKey('no_produk', true);
 
-        // Create table
+        $this->forge->addForeignKey('no_merk_produk', 'merk_produk', 'no_merk_produk', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('no_kategori_produk', 'kategori_produk', 'no_kategori_produk', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('no_ukuran_produk', 'ukuran_produk', 'no_ukuran_produk', 'CASCADE', 'CASCADE');
+
         $this->forge->createTable('produk');
     }
 
