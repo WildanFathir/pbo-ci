@@ -58,4 +58,11 @@ $routes->group('dashboard', function ($routes) {
     $routes->post('pelanggan/edit', 'dashboard\Pelanggan_controller::ubah', ['as' => 'editPelanggan']);
     $routes->get('pelanggan/hapus/(:any)', 'dashboard\Pelanggan_controller::hapus/$1', ['as' => 'hapusPelanggan']);
     $routes->get('pelanggan/cetak', 'dashboard\Pelanggan_controller::cetak', ['as' => 'cetakPelanggan']);
+
+    // pemasok routes
+    $routes->get('pemasok', 'dashboard\Pemasok_controller::index', ['as' => 'pemasok']);
+    $routes->post('pemasok/simpan', 'dashboard\Pemasok_controller::simpan', ['as' => 'simpanPemasok']);
+    $routes->post('pemasok/edit', 'dashboard\Pemasok_controller::ubah', ['as' => 'editPemasok']);
+    $routes->get('pemasok/hapus/(:any)', 'dashboard\Pemasok_controller::hapus/$1', ['as' => 'hapusPemasok']);
+    $routes->get('pemasok/cetak', 'dashboard\Pemasok_controller::cetak', ['as' => 'cetakPemasok']);
 });
