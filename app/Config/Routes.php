@@ -23,4 +23,11 @@ $routes->group('dashboard', function ($routes) {
     $routes->post('karyawan/edit', 'dashboard\Karyawan_controller::ubah', ['as' => 'editKaryawan']);
     $routes->get('karyawan/hapus/(:any)', 'dashboard\Karyawan_controller::hapus/$1');
     $routes->get('karyawan/cetak', 'dashboard\Karyawan_controller::cetak', ['as' => 'cetakKaryawan']);
+
+    // kategori produk routes
+    $routes->get('kategori_produk', 'dashboard\Kategori_produk_controller::index', ['as' => 'kategoriProduk']);
+    $routes->post('kategori_produk/simpan', 'dashboard\Kategori_produk_controller::simpan', ['as' => 'simpanKategoriProduk']);
+    $routes->post('kategori_produk/edit', 'dashboard\Kategori_produk_controller::ubah', ['as' => 'editKategoriProduk']);
+    $routes->get('kategori_produk/hapus/(:any)', 'dashboard\Kategori_produk_controller::hapus/$1', ['as' => 'hapusKategoriProduk']);
+    $routes->get('kategori_produk/cetak', 'dashboard\Kategori_produk_controller::cetak', ['as' => 'cetakKategoriProduk']);
 });
