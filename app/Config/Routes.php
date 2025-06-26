@@ -44,4 +44,11 @@ $routes->group('dashboard', function ($routes) {
     $routes->post('ukuran_produk/edit', 'dashboard\Ukuran_produk_controller::ubah', ['as' => 'editUkuranProduk']);
     $routes->get('ukuran_produk/hapus/(:any)', 'dashboard\Ukuran_produk_controller::hapus/$1', ['as' => 'hapusUkuranProduk']);
     $routes->get('ukuran_produk/cetak', 'dashboard\Ukuran_produk_controller::cetak', ['as' => 'cetakUkuranProduk']);
+
+    // produk routes
+    $routes->get('produk', 'dashboard\Produk_controller::index', ['as' => 'produk']);
+    $routes->post('produk/simpan', 'dashboard\Produk_controller::simpan', ['as' => 'simpanProduk']);
+    $routes->post('produk/edit', 'dashboard\Produk_controller::ubah', ['as' => 'editProduk']);
+    $routes->get('produk/hapus/(:any)', 'dashboard\Produk_controller::hapus/$1', ['as' => 'hapusProduk']);
+    $routes->get('produk/cetak', 'dashboard\Produk_controller::cetak', ['as' => 'cetakProduk']);
 });
