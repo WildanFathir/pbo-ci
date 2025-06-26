@@ -30,4 +30,11 @@ $routes->group('dashboard', function ($routes) {
     $routes->post('kategori_produk/edit', 'dashboard\Kategori_produk_controller::ubah', ['as' => 'editKategoriProduk']);
     $routes->get('kategori_produk/hapus/(:any)', 'dashboard\Kategori_produk_controller::hapus/$1', ['as' => 'hapusKategoriProduk']);
     $routes->get('kategori_produk/cetak', 'dashboard\Kategori_produk_controller::cetak', ['as' => 'cetakKategoriProduk']);
+
+    // merk produk routes
+    $routes->get('merk_produk', 'dashboard\Merk_produk_controller::index', ['as' => 'merkProduk']);
+    $routes->post('merk_produk/simpan', 'dashboard\Merk_produk_controller::simpan', ['as' => 'simpanMerkProduk']);
+    $routes->post('merk_produk/edit', 'dashboard\Merk_produk_controller::ubah', ['as' => 'editMerkProduk']);
+    $routes->get('merk_produk/hapus/(:any)', 'dashboard\Merk_produk_controller::hapus/$1', ['as' => 'hapusMerkProduk']);
+    $routes->get('merk_produk/cetak', 'dashboard\Merk_produk_controller::cetak', ['as' => 'cetakMerkProduk']);
 });
