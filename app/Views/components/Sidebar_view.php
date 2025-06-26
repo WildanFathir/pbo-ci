@@ -1,21 +1,21 @@
 <ul class="nav nav-list">
     <li>
         <a href="<?= route_to('dashboard') ?>">
-            <i class="icon-dashboard"></i>
+            <i class="icon-home"></i>
             <span class="menu-text"> Dashboard </span>
         </a>
     </li>
 
     <li>
         <a href="<?= route_to('karyawan') ?>">
-            <i class="icon-text-width"></i>
+            <i class="icon-group"></i>
             <span class="menu-text"> Karyawan </span>
         </a>
     </li>
 
     <li class="">
         <a href="#" class="dropdown-toggle">
-            <i class="icon-file-alt"></i>
+            <i class="icon-archive"></i>
 
             <span class="menu-text">
                 Data Produk
