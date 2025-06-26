@@ -23,7 +23,7 @@ class KaryawabTable extends Migration
             ],
             'password' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 30,
+                'constraint' => 100,
             ],
             'foto' => [
                 'type'       => 'VARCHAR',
@@ -33,7 +33,7 @@ class KaryawabTable extends Migration
 
         // Set primary key
         $this->forge->addKey('no_karyawan', true);
-        
+
         // Buat tabel
         $this->forge->createTable('karyawan');
     }
