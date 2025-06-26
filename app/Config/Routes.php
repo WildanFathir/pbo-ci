@@ -51,4 +51,11 @@ $routes->group('dashboard', function ($routes) {
     $routes->post('produk/edit', 'dashboard\Produk_controller::ubah', ['as' => 'editProduk']);
     $routes->get('produk/hapus/(:any)', 'dashboard\Produk_controller::hapus/$1', ['as' => 'hapusProduk']);
     $routes->get('produk/cetak', 'dashboard\Produk_controller::cetak', ['as' => 'cetakProduk']);
+
+    // pelanggan routes
+    $routes->get('pelanggan', 'dashboard\Pelanggan_controller::index', ['as' => 'pelanggan']);
+    $routes->post('pelanggan/simpan', 'dashboard\Pelanggan_controller::simpan', ['as' => 'simpanPelanggan']);
+    $routes->post('pelanggan/edit', 'dashboard\Pelanggan_controller::ubah', ['as' => 'editPelanggan']);
+    $routes->get('pelanggan/hapus/(:any)', 'dashboard\Pelanggan_controller::hapus/$1', ['as' => 'hapusPelanggan']);
+    $routes->get('pelanggan/cetak', 'dashboard\Pelanggan_controller::cetak', ['as' => 'cetakPelanggan']);
 });
