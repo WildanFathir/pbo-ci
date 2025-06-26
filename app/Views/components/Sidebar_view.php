@@ -34,7 +34,7 @@
             </li>
 
             <li>
-                <a href="error-500.html">
+                <a href="<?= route_to('merkProduk') ?>">
                     <i class="icon-double-angle-right"></i>
                     Merk Produk
                 </a>
