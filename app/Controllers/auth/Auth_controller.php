@@ -9,8 +9,8 @@ class Auth_controller extends Base_controller
 {
     public function login()
     {
-        $sessiopn = session();
-        if (!empty($sessiopn->get('status_login'))) {
+        $session = session();
+        if (!empty($session->get('status_login'))) {
             return redirect()->to('dashboard');
         } else {
             $data['css_js'] = view('components/Css_js');
