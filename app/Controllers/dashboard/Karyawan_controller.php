@@ -214,8 +214,8 @@ class Karyawan_controller extends Base_controller
         foreach ($data as $karyawan) {
             $pdf->Cell(10, 6, $no, 1, 0, 'C', $fill2);
             $pdf->Cell(40, 6, $karyawan['no_karyawan'], 1, 0, 'C', $fill2);
-            $pdf->Cell(75, 6, $karyawan['nama_karyawan'], 1, 0, 'L', $fill2);
-            $pdf->Cell(150, 6, $karyawan['alamat'], 1, 1, 'L', $fill2);
+            $pdf->Cell(75, 6, $karyawan['nama_karyawan'], 1, 0, 'C', $fill2);
+            $pdf->Cell(150, 6, $karyawan['alamat'], 1, 1, 'C', $fill2);
             $fill2 = !$fill2;
             $no++;
         }
