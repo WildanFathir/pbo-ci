@@ -50,13 +50,13 @@ class Produk_controller extends Base_controller
             return view('dashboard/Produk_view', $data);
         }
 
-        return redirect()->to('auth/login');
+        return redirect()->to(base_url('auth/login'));
     }
 
     public function simpan()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         $data = [
@@ -87,7 +87,7 @@ class Produk_controller extends Base_controller
                 'type' => 'warning',
                 'message' => $validation->listErrors()
             ]);
-            return redirect()->to('/dashboard/produk')->withInput();
+            return redirect()->to(base_url('dashboard/produk'))->withInput();
         }
 
         $this->produkModel->insert($data);
@@ -96,13 +96,13 @@ class Produk_controller extends Base_controller
             'type' => 'success',
             'message' => 'Data berhasil disimpan.'
         ]);
-        return redirect()->to('/dashboard/produk');
+        return redirect()->to(base_url('dashboard/produk'));
     }
 
     public function ubah()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         $no_produk = $this->request->getPost('no_produk_edit');
@@ -134,7 +134,7 @@ class Produk_controller extends Base_controller
                 'type' => 'warning',
                 'message' => $validation->listErrors()
             ]);
-            return redirect()->to('/dashboard/produk');
+            return redirect()->to(base_url('dashboard/produk'));
         }
 
         $this->produkModel->update_data($no_produk, $data);
@@ -143,13 +143,13 @@ class Produk_controller extends Base_controller
             'type' => 'success',
             'message' => 'Data berhasil diperbarui.'
         ]);
-        return redirect()->to('/dashboard/produk');
+        return redirect()->to(base_url('dashboard/produk'));
     }
 
     public function hapus($no_produk = null)
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         if ($no_produk) {
@@ -159,13 +159,13 @@ class Produk_controller extends Base_controller
                 'message' => 'Data berhasil dihapus.'
             ]);
         }
-        return redirect()->to('/dashboard/produk');
+        return redirect()->to(base_url('dashboard/produk'));
     }
 
     public function cetak()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         require_once APPPATH . 'fpdf/fpdf.php';

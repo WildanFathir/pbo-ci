@@ -3,7 +3,6 @@ PERUBAHAN UNTUK MIGRASI DARI VIRTUAL HOST KE XAMPP BASE URL
 =================================================================
 
 PROJECT: pbo-ci
-TANGGAL: $(date)
 
 -----------------------------------------------------------------
 PERUBAHAN YANG DILAKUKAN:
@@ -15,6 +14,33 @@ PERUBAHAN YANG DILAKUKAN:
 
 2. public/.htaccess
    - RewriteBase: # RewriteBase / → RewriteBase /pbo-ci/
+
+3. Semua Controllers (Auth, Dashboard, dll)
+   - Semua redirect()->to() diubah menggunakan base_url()
+   - Contoh:
+     SEBELUM: redirect()->to('/dashboard')
+     SESUDAH: redirect()->to(base_url('dashboard'))
+   
+   - Contoh lain:
+     SEBELUM: redirect()->to('auth/login')  
+     SESUDAH: redirect()->to(base_url('auth/login'))
+
+-----------------------------------------------------------------
+MENGAPA HARUS PAKAI base_url() DI CONTROLLER?
+-----------------------------------------------------------------
+
+Karena project ini berada di SUBFOLDER (localhost/pbo-ci/), maka:
+
+❌ SALAH: redirect()->to('/dashboard')
+   → Akan redirect ke: localhost/dashboard (404 Not Found)
+
+❌ SALAH: redirect()->to('dashboard')
+   → Akan redirect ke: localhost/auth/dashboard (relative path error)
+
+✅ BENAR: redirect()->to(base_url('dashboard'))
+   → Akan redirect ke: localhost/pbo-ci/dashboard (BENAR!)
+
+base_url() otomatis menambahkan prefix sesuai setting di App.php
 
 -----------------------------------------------------------------
 FILE YANG TIDAK PERLU DIUBAH:

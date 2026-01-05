@@ -38,13 +38,13 @@ class Karyawan_controller extends Base_controller
             return view('dashboard/Karyawan_view', $data);
         }
 
-        return redirect()->to('auth/login');
+        return redirect()->to(base_url('auth/login'));
     }
 
     public function simpan()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         $no_karyawan    = $this->request->getPost('no_karyawan');
@@ -108,7 +108,7 @@ class Karyawan_controller extends Base_controller
     public function ubah()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         $no_karyawan    = $this->request->getPost('no_karyawan_edit');
@@ -170,7 +170,7 @@ class Karyawan_controller extends Base_controller
     public function hapus($no_karyawan = null)
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         if ($no_karyawan) {
@@ -186,7 +186,7 @@ class Karyawan_controller extends Base_controller
     public function cetak()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         require_once APPPATH . 'fpdf/fpdf.php';

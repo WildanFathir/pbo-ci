@@ -11,7 +11,7 @@ class Auth_controller extends Base_controller
     {
         $session = session();
         if (!empty($session->get('status_login'))) {
-            return redirect()->to('dashboard');
+            return redirect()->to(base_url('dashboard'));
         } else {
             $data['css_js'] = view('components/Css_js');
             return view('auth/Login_view', $data);
@@ -41,7 +41,7 @@ class Auth_controller extends Base_controller
                     </div>
                 ');
 
-                return redirect()->to('auth/login');
+                return redirect()->to(base_url('auth/login'));
             }
 
             if ($proses) {
@@ -55,7 +55,7 @@ class Auth_controller extends Base_controller
                 ];
 
                 session()->set($data);
-                return redirect()->to('dashboard');
+                return redirect()->to(base_url('dashboard'));
             } else {
                 session()->setFlashdata('info', '
                     <div class="alert alert-danger">
@@ -71,16 +71,16 @@ class Auth_controller extends Base_controller
                     </div>
                 ');
 
-                return redirect()->to('auth/login');
+                return redirect()->to(base_url('auth/login'));
             }
         }
 
-        return redirect()->to('auth/login');
+        return redirect()->to(base_url('auth/login'));
     }
 
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('auth/login');
+        return redirect()->to(base_url('auth/login'));
     }
 }

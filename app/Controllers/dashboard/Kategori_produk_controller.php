@@ -38,13 +38,13 @@ class Kategori_produk_controller extends Base_controller
             return view('dashboard/Kategori_produk_view', $data);
         }
 
-        return redirect()->to('auth/login');
+        return redirect()->to(base_url('auth/login'));
     }
 
     public function simpan()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         $no_kategori_produk    = $this->request->getPost('no_kategori_produk');
@@ -61,7 +61,7 @@ class Kategori_produk_controller extends Base_controller
                 'type' => 'warning',
                 'message' => $validation->listErrors()
             ]);
-            return redirect()->to('/dashboard/kategori_produk');
+            return redirect()->to(base_url('dashboard/kategori_produk'));
         }
 
         $this->kategoriProdukModel->insert([
@@ -73,13 +73,13 @@ class Kategori_produk_controller extends Base_controller
             'type' => 'success',
             'message' => 'Data berhasil disimpan.'
         ]);
-        return redirect()->to('/dashboard/kategori_produk');
+        return redirect()->to(base_url('dashboard/kategori_produk'));
     }
 
     public function ubah()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         $no_kategori_produk    = $this->request->getPost('no_kategori_produk_edit');
@@ -98,7 +98,7 @@ class Kategori_produk_controller extends Base_controller
                 'type' => 'warning',
                 'message' => $validation->listErrors()
             ]);
-            return redirect()->to('/dashboard/kategori_produk');
+            return redirect()->to(base_url('dashboard/kategori_produk'));
         }
 
         $this->kategoriProdukModel->update_data($no_kategori_produk, $nama_kategori_produk);
@@ -107,13 +107,13 @@ class Kategori_produk_controller extends Base_controller
             'type' => 'success',
             'message' => 'Data berhasil diperbarui.'
         ]);
-        return redirect()->to('/dashboard/kategori_produk');
+        return redirect()->to(base_url('dashboard/kategori_produk'));
     }
 
     public function hapus($no_kategori_produk = null)
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         if ($no_kategori_produk) {
@@ -123,13 +123,13 @@ class Kategori_produk_controller extends Base_controller
                 'message' => 'Data berhasil dihapus.'
             ]);
         }
-        return redirect()->to('/dashboard/kategori_produk');
+        return redirect()->to(base_url('dashboard/kategori_produk'));
     }
 
     public function cetak()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         require_once APPPATH . 'fpdf/fpdf.php';

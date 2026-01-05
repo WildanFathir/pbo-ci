@@ -38,13 +38,13 @@ class Pelanggan_controller extends Base_controller
             return view('dashboard/Pelanggan_view', $data);
         }
 
-        return redirect()->to('auth/login');
+        return redirect()->to(base_url('auth/login'));
     }
 
     public function simpan()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         $no_pelanggan    = $this->request->getPost('no_pelanggan');
@@ -107,7 +107,7 @@ class Pelanggan_controller extends Base_controller
     public function ubah()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         $no_pelanggan    = $this->request->getPost('no_pelanggan_edit');
@@ -168,7 +168,7 @@ class Pelanggan_controller extends Base_controller
     public function hapus($no_pelanggan = null)
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         if ($no_pelanggan) {
@@ -184,7 +184,7 @@ class Pelanggan_controller extends Base_controller
     public function cetak()
     {
         if (!session()->get('status_login')) {
-            return redirect()->to('auth/login');
+            return redirect()->to(base_url('auth/login'));
         }
 
         require_once APPPATH . 'fpdf/fpdf.php';

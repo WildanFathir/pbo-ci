@@ -11,6 +11,14 @@ Project ini telah dimodifikasi untuk menggunakan base URL XAMPP menggantikan vir
 ### 2. File: `public/.htaccess`
 - **RewriteBase** di-uncomment dan diset menjadi `/pbo-ci/`
 
+### 3. File: Semua Controllers
+- Semua `redirect()->to()` sudah menggunakan `base_url()` untuk kompatibilitas dengan subfolder XAMPP
+- Contoh: `redirect()->to(base_url('dashboard'))` bukan `redirect()->to('/dashboard')`
+
+### 4. File: Semua Views
+- Sudah menggunakan `base_url()` dan `route_to()` untuk semua link dan asset
+- JavaScript redirects juga menggunakan `base_url()`
+
 ## Cara Setup di XAMPP
 
 ### Langkah 1: Pindahkan Project ke htdocs
@@ -109,4 +117,8 @@ Jika ingin kembali menggunakan virtual host, ubah:
    ```apache
    # RewriteBase /
    ```
-   (comment kembali atau hapus baris RewriteBase)
+   (comment kembali baris RewriteBase)
+
+3. **Semua Controllers**: Redirect akan tetap berfungsi karena `base_url()` akan mengikuti setting baseURL
+
+**Catatan**: Tidak perlu mengubah redirect di controllers karena sudah menggunakan `base_url()` yang otomatis menyesuaikan dengan setting di `App.php`.
