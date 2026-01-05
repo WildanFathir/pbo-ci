@@ -21,7 +21,7 @@ $routes->group('dashboard', function ($routes) {
     $routes->get('karyawan', 'dashboard\Karyawan_controller::index', ['as' => 'karyawan']);
     $routes->post('karyawan/simpan', 'dashboard\Karyawan_controller::simpan', ['as' => 'simpanKaryawan']);
     $routes->post('karyawan/edit', 'dashboard\Karyawan_controller::ubah', ['as' => 'editKaryawan']);
-    $routes->get('karyawan/hapus/(:any)', 'dashboard\Karyawan_controller::hapus/$1');
+    $routes->get('karyawan/hapus/(:any)', 'dashboard\Karyawan_controller::hapus/$1', ['as' => 'hapusKaryawan']);
     $routes->get('karyawan/cetak', 'dashboard\Karyawan_controller::cetak', ['as' => 'cetakKaryawan']);
 
     // kategori produk routes

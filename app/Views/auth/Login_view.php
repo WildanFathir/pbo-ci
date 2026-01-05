@@ -53,7 +53,7 @@
                                             }
                                             ?>
 
-                                            <form name="form_login" method="post" action="<?= route_to('prosesLogin'); ?>">
+                                            <form name="form_login" method="post" action="<?= base_url('auth/proses'); ?>">
                                                 <fieldset>
                                                     <label>
                                                         <span class="block input-icon input-icon-right">

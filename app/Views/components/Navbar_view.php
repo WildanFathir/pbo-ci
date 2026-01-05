@@ -10,7 +10,7 @@
         <ul class="nav ace-nav pull-right">
             <li class="light-blue">
                 <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                    <img class="nav-user-photo" src="<?php echo base_url(); ?>/assets/avatars/<?php echo $foto ?>" alt="<?php echo $foto ?>" />
+                    <img class="nav-user-photo" src="<?= base_url('assets/avatars/' . $foto) ?>" alt="<?php echo $foto ?>" />
                     <span class="user-info">
                         <small>Selamat Datang</small>
                         <?php echo $nama_karyawan ?>
@@ -37,7 +37,7 @@
                     <li class="divider"></li>
 
                     <li>
-                        <a href="<?= route_to('logout') ?>">
+                        <a href="<?= base_url('auth/logout') ?>">
                             <i class="icon-off"></i>
                             Logout
                         </a>

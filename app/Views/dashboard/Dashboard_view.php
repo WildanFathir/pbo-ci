@@ -30,7 +30,7 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home home-icon"></i>
-                        <a href="<?= route_to('dashboard') ?>">Dashboard</a>
+                        <a href="<?= base_url('dashboard') ?>">Dashboard</a>
 
                         <span class="divider">
                             <i class="icon-angle-right arrow-icon"></i>

@@ -30,7 +30,7 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home home-icon"></i>
-                        <a href="<?= route_to('dashboard') ?>">Dashboard</a>
+                        <a href="<?= base_url('dashboard') ?>">Dashboard</a>
 
                         <span class="divider">
                             <i class="icon-angle-right arrow-icon"></i>
@@ -52,8 +52,8 @@
             <div class="page-content">
                 <div class="button-group" style="margin-bottom: 8px;">
                     <a href="#modal-form" role="button" class="btn btn-info" data-toggle="modal">Tambah Data</a>
-                    <a href="<?= route_to('cetakKaryawan') ?>" target="_blank" role="button" class="btn btn-yellow" data-toggle="modal">Cetak PDF</a>
-                    <a href="<?= route_to('dashboard') ?>" role="button" class="btn btn-default" data-toggle="modal">Kembali</a>
+                    <a href="<?= base_url('dashboard/karyawan/cetak') ?>" target="_blank" role="button" class="btn btn-yellow" data-toggle="modal">Cetak PDF</a>
+                    <a href="<?= base_url('dashboard') ?>" role="button" class="btn btn-default" data-toggle="modal">Kembali</a>
                 </div>
                 <!-- Flashdata notification -->
                 <?php if ($flash = session()->getFlashdata('flash')): ?>
@@ -193,7 +193,7 @@
     </a>
 
     <!-- modal form -->
-    <form name="modal_form1" method="post" enctype="multipart/form-data" action="<?= route_to('simpanKaryawan') ?>" onsubmit="return cek_inputan()">
+    <form name="modal_form1" method="post" enctype="multipart/form-data" action="<?= base_url('dashboard/karyawan/simpan') ?>" onsubmit="return cek_inputan()">
         <div id="modal-form" class="modal hide" tabindex="-1">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -260,7 +260,7 @@
         </div>
     </form>
 
-    <form name="modal_form2" method="post" enctype="multipart/form-data" action="<?= route_to('editKaryawan') ?>" onsubmit="return cek_inputan_edit()">
+    <form name="modal_form2" method="post" enctype="multipart/form-data" action="<?= base_url('dashboard/karyawan/edit') ?>" onsubmit="return cek_inputan_edit()">
         <div id="modal-form2" class="modal hide" tabindex="-1">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>

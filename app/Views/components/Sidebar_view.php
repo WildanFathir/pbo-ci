@@ -1,13 +1,13 @@
 <ul class="nav nav-list">
     <li>
-        <a href="<?= route_to('dashboard') ?>">
+        <a href="<?= base_url('dashboard') ?>">
             <i class="icon-home"></i>
             <span class="menu-text"> Dashboard </span>
         </a>
     </li>
 
     <li>
-        <a href="<?= route_to('karyawan') ?>">
+        <a href="<?= base_url('dashboard/karyawan') ?>">
             <i class="icon-group"></i>
             <span class="menu-text"> Karyawan </span>
         </a>
@@ -26,28 +26,28 @@
 
         <ul class="submenu">
             <li>
-                <a href="<?= route_to('kategoriProduk') ?>">
+                <a href="<?= base_url('dashboard/kategori_produk') ?>">
                     <i class="icon-double-angle-right"></i>
                     Kategori Produk
                 </a>
             </li>
 
             <li>
-                <a href="<?= route_to('merkProduk') ?>">
+                <a href="<?= base_url('dashboard/merk_produk') ?>">
                     <i class="icon-double-angle-right"></i>
                     Merk Produk
                 </a>
             </li>
 
             <li>
-                <a href="<?= route_to('ukuranProduk') ?>">
+                <a href="<?= base_url('dashboard/ukuran_produk') ?>">
                     <i class="icon-double-angle-right"></i>
                     Ukuran
                 </a>
             </li>
 
             <li class="">
-                <a href="<?= route_to('produk') ?>">
+                <a href="<?= base_url('dashboard/produk') ?>">
                     <i class="icon-double-angle-right"></i>
                     Produk
                 </a>
@@ -56,14 +56,14 @@
     </li>
 
     <li>
-        <a href="<?= route_to('pelanggan') ?>">
+        <a href="<?= base_url('dashboard/pelanggan') ?>">
             <i class="icon-user"></i>
             <span class="menu-text"> Pelanggan </span>
         </a>
     </li>
 
     <li>
-        <a href="<?= route_to('pemasok') ?>">
+        <a href="<?= base_url('dashboard/pemasok') ?>">
             <i class="icon-truck"></i>
             <span class="menu-text"> Pemasok </span>
         </a>
