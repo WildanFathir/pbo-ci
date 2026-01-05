@@ -1,0 +1,64 @@
+=================================================================
+PERUBAHAN UNTUK MIGRASI DARI VIRTUAL HOST KE XAMPP BASE URL
+=================================================================
+
+PROJECT: pbo-ci
+TANGGAL: $(date)
+
+-----------------------------------------------------------------
+PERUBAHAN YANG DILAKUKAN:
+-----------------------------------------------------------------
+
+1. app/Config/App.php
+   - baseURL: 'http://pbo-wildan/' → 'http://localhost/pbo-ci/'
+   - indexPage: 'index.php' → '' (kosong untuk clean URL)
+
+2. public/.htaccess
+   - RewriteBase: # RewriteBase / → RewriteBase /pbo-ci/
+
+-----------------------------------------------------------------
+FILE YANG TIDAK PERLU DIUBAH:
+-----------------------------------------------------------------
+
+✓ Views - Sudah menggunakan base_url() helper dengan benar
+✓ Controllers - Redirect sudah menggunakan relative path
+✓ Routes - Tidak perlu perubahan
+✓ Models - Tidak terpengaruh
+
+-----------------------------------------------------------------
+CARA MENGGUNAKAN DI XAMPP:
+-----------------------------------------------------------------
+
+1. Copy/pindahkan folder project ke htdocs XAMPP:
+   - Windows: C:\xampp\htdocs\pbo-ci\
+   - macOS: /Applications/XAMPP/htdocs/pbo-ci/
+   - Linux: /opt/lampp/htdocs/pbo-ci/
+
+2. Setup database di phpMyAdmin (http://localhost/phpmyadmin)
+   - Edit app/Config/Database.php dengan kredensial Anda
+
+3. Pastikan mod_rewrite Apache aktif di httpd.conf:
+   LoadModule rewrite_module modules/mod_rewrite.so
+
+4. Akses aplikasi:
+   http://localhost/pbo-ci/
+
+-----------------------------------------------------------------
+CATATAN PENTING:
+-----------------------------------------------------------------
+
+• Jika nama folder berbeda, sesuaikan baseURL dan RewriteBase
+• Jika port berbeda (misal 8080), gunakan: http://localhost:8080/pbo-ci/
+• CSS/JS/Images akan otomatis mengikuti base_url()
+• File .htaccess di public/ mengatur URL rewriting
+
+-----------------------------------------------------------------
+TROUBLESHOOTING:
+-----------------------------------------------------------------
+
+404 Not Found → Cek mod_rewrite dan RewriteBase
+CSS tidak load → Cek baseURL di App.php
+Redirect loop → Cek indexPage sudah kosong
+
+Lihat file XAMPP_SETUP.md untuk panduan lengkap.
+=================================================================
