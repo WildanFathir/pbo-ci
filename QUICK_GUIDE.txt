@@ -1,0 +1,85 @@
+================================================================
+QUICK GUIDE - Cara Akses Project PBO-CI di XAMPP
+================================================================
+
+FOLDER STRUCTURE:
+C:\xampp\htdocs\pbo_zm\       ← Your project folder
+                    └── public\   ← Document root
+
+KONFIGURASI SAAT INI:
+baseURL: http://localhost/pbo_zm/public/
+RewriteBase: /pbo_zm/public/
+
+================================================================
+CARA AKSES:
+================================================================
+
+1. Akses homepage:
+   http://localhost/pbo_zm/public/
+
+2. Login page:
+   http://localhost/pbo_zm/public/auth/login
+
+3. Setelah login akan redirect ke:
+   http://localhost/pbo_zm/public/dashboard
+
+================================================================
+EXPECTED URL STRUCTURE:
+================================================================
+
+✅ Homepage:       http://localhost/pbo_zm/public/
+✅ Login:          http://localhost/pbo_zm/public/auth/login
+✅ Login Process:  http://localhost/pbo_zm/public/auth/proses
+✅ Dashboard:      http://localhost/pbo_zm/public/dashboard
+✅ Karyawan:       http://localhost/pbo_zm/public/dashboard/karyawan
+✅ Logout:         http://localhost/pbo_zm/public/auth/logout
+
+================================================================
+TROUBLESHOOTING:
+================================================================
+
+Jika masih 404:
+1. Restart Apache di XAMPP
+2. Clear browser cache (Ctrl+F5)
+3. Pastikan mod_rewrite aktif
+4. Cek file .htaccess ada di public/
+
+Jika CSS tidak load:
+1. Cek folder public/assets accessible
+2. Clear browser cache
+3. View source, cek path CSS
+
+================================================================
+ALTERNATIVE (Without /public/ in URL):
+================================================================
+
+Jika ingin URL tanpa /public/, buat Virtual Host:
+
+1. Edit: C:\xampp\apache\conf\extra\httpd-vhosts.conf
+
+<VirtualHost *:80>
+    ServerName pbo-zm.test
+    DocumentRoot "C:/xampp/htdocs/pbo_zm/public"
+    <Directory "C:/xampp/htdocs/pbo_zm/public">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+2. Edit: C:\Windows\System32\drivers\etc\hosts
+   
+127.0.0.1 pbo-zm.test
+
+3. Restart Apache
+
+4. Ubah baseURL di App.php:
+   public string $baseURL = 'http://pbo-zm.test/';
+
+5. Ubah RewriteBase di .htaccess:
+   RewriteBase /
+
+6. Akses: http://pbo-zm.test/
+
+================================================================
+STATUS: READY TO TEST! ✅
+================================================================
